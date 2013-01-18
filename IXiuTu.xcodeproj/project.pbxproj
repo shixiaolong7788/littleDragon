@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0FBF62F16A833460041954F /* GHMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FBF62E16A833460041954F /* GHMenuCell.m */; };
+		C0FBF64016A843760041954F /* searchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FBF63B16A843760041954F /* searchBarBG.png */; };
+		C0FBF64116A843760041954F /* searchBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FBF63C16A843760041954F /* searchBarIcon.png */; };
+		C0FBF64216A843760041954F /* searchBarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FBF63D16A843760041954F /* searchBarIcon@2x.png */; };
+		C0FBF64316A843760041954F /* searchTextBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FBF63E16A843760041954F /* searchTextBG.png */; };
+		C0FBF64416A843760041954F /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FBF63F16A843760041954F /* user.png */; };
+		C0FBF64616A848AD0041954F /* GHRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FBF62916A8331A0041954F /* GHRevealViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C0FBF64816A848AD0041954F /* GHSidebarSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FBF62B16A8331A0041954F /* GHSidebarSearchViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C0FBF64B16A848C70041954F /* GHRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FBF63316A833860041954F /* GHRootViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C0FBF64D16A848C70041954F /* GHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FBF63116A8336C0041954F /* GHMenuViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C0FBF65216A848FB0041954F /* GHPushedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FBF65016A848E50041954F /* GHPushedViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C0FBF65416A849F20041954F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FBF65316A849F20041954F /* QuartzCore.framework */; };
 		CE06353016A3DCD6009ACB88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE06352F16A3DCD6009ACB88 /* UIKit.framework */; };
 		CE06353216A3DCD6009ACB88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE06353116A3DCD6009ACB88 /* Foundation.framework */; };
 		CE06353416A3DCD6009ACB88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE06353316A3DCD6009ACB88 /* CoreGraphics.framework */; };
@@ -80,6 +92,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0FBF62816A8331A0041954F /* GHRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHRevealViewController.h; sourceTree = "<group>"; };
+		C0FBF62916A8331A0041954F /* GHRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHRevealViewController.m; sourceTree = "<group>"; };
+		C0FBF62A16A8331A0041954F /* GHSidebarSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHSidebarSearchViewController.h; sourceTree = "<group>"; };
+		C0FBF62B16A8331A0041954F /* GHSidebarSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHSidebarSearchViewController.m; sourceTree = "<group>"; };
+		C0FBF62C16A8331A0041954F /* GHSidebarSearchViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHSidebarSearchViewControllerDelegate.h; sourceTree = "<group>"; };
+		C0FBF62D16A833410041954F /* GHMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHMenuCell.h; sourceTree = "<group>"; };
+		C0FBF62E16A833460041954F /* GHMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMenuCell.m; sourceTree = "<group>"; };
+		C0FBF63016A8336C0041954F /* GHMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHMenuViewController.h; sourceTree = "<group>"; };
+		C0FBF63116A8336C0041954F /* GHMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHMenuViewController.m; sourceTree = "<group>"; };
+		C0FBF63216A833860041954F /* GHRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHRootViewController.h; sourceTree = "<group>"; };
+		C0FBF63316A833860041954F /* GHRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHRootViewController.m; sourceTree = "<group>"; };
+		C0FBF63916A843050041954F /* NSObject+Subscripts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Subscripts.h"; sourceTree = "<group>"; };
+		C0FBF63B16A843760041954F /* searchBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBarBG.png; sourceTree = "<group>"; };
+		C0FBF63C16A843760041954F /* searchBarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBarIcon.png; sourceTree = "<group>"; };
+		C0FBF63D16A843760041954F /* searchBarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarIcon@2x.png"; sourceTree = "<group>"; };
+		C0FBF63E16A843760041954F /* searchTextBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchTextBG.png; sourceTree = "<group>"; };
+		C0FBF63F16A843760041954F /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		C0FBF64F16A848E50041954F /* GHPushedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHPushedViewController.h; sourceTree = "<group>"; };
+		C0FBF65016A848E50041954F /* GHPushedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHPushedViewController.m; sourceTree = "<group>"; };
+		C0FBF65316A849F20041954F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CE06352B16A3DCD6009ACB88 /* IXiuTu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IXiuTu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE06352F16A3DCD6009ACB88 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE06353116A3DCD6009ACB88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -210,6 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FBF65416A849F20041954F /* QuartzCore.framework in Frameworks */,
 				CE9C609116A63D6F00375C9E /* Security.framework in Frameworks */,
 				CE06357F16A3E309009ACB88 /* libz.dylib in Frameworks */,
 				CE06357E16A3E2C6009ACB88 /* SystemConfiguration.framework in Frameworks */,
@@ -226,9 +259,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C0FBF62616A832F60041954F /* GHSidebarNav */ = {
+			isa = PBXGroup;
+			children = (
+				C0FBF62816A8331A0041954F /* GHRevealViewController.h */,
+				C0FBF62916A8331A0041954F /* GHRevealViewController.m */,
+				C0FBF62A16A8331A0041954F /* GHSidebarSearchViewController.h */,
+				C0FBF62B16A8331A0041954F /* GHSidebarSearchViewController.m */,
+				C0FBF62C16A8331A0041954F /* GHSidebarSearchViewControllerDelegate.h */,
+			);
+			name = GHSidebarNav;
+			sourceTree = "<group>";
+		};
+		C0FBF63816A842F70041954F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C0FBF63916A843050041954F /* NSObject+Subscripts.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		C0FBF63A16A843680041954F /* 导航 */ = {
+			isa = PBXGroup;
+			children = (
+				C0FBF63B16A843760041954F /* searchBarBG.png */,
+				C0FBF63C16A843760041954F /* searchBarIcon.png */,
+				C0FBF63D16A843760041954F /* searchBarIcon@2x.png */,
+				C0FBF63E16A843760041954F /* searchTextBG.png */,
+				C0FBF63F16A843760041954F /* user.png */,
+			);
+			name = "导航";
+			sourceTree = "<group>";
+		};
 		CE06352016A3DCD6009ACB88 = {
 			isa = PBXGroup;
 			children = (
+				C0FBF65316A849F20041954F /* QuartzCore.framework */,
+				C0FBF63816A842F70041954F /* Utils */,
+				C0FBF62616A832F60041954F /* GHSidebarNav */,
 				CEC775B816A7E5BF00E6311E /* libSDWebImage */,
 				CE9C608F16A63C5C00375C9E /* MKNetworkKit */,
 				CE9C606916A6377400375C9E /* UIAdditions */,
@@ -269,6 +337,14 @@
 		CE06353516A3DCD6009ACB88 /* IXiuTu */ = {
 			isa = PBXGroup;
 			children = (
+				C0FBF64F16A848E50041954F /* GHPushedViewController.h */,
+				C0FBF65016A848E50041954F /* GHPushedViewController.m */,
+				C0FBF63216A833860041954F /* GHRootViewController.h */,
+				C0FBF63316A833860041954F /* GHRootViewController.m */,
+				C0FBF63016A8336C0041954F /* GHMenuViewController.h */,
+				C0FBF63116A8336C0041954F /* GHMenuViewController.m */,
+				C0FBF62E16A833460041954F /* GHMenuCell.m */,
+				C0FBF62D16A833410041954F /* GHMenuCell.h */,
 				CE06353E16A3DCD6009ACB88 /* AppDelegate.h */,
 				CE06353F16A3DCD6009ACB88 /* AppDelegate.m */,
 				CE06354C16A3DD6A009ACB88 /* PhotoInfoPaser.h */,
@@ -339,6 +415,7 @@
 		CE95EF4B16A5550F0020B648 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
+				C0FBF63A16A843680041954F /* 导航 */,
 				CE95EF4C16A5551E0020B648 /* image */,
 			);
 			name = Resouces;
@@ -533,6 +610,11 @@
 				CEC775B716A7DE9400E6311E /* contentview_pulloutButton@2x.png in Resources */,
 				CEC775DC16A7FB7C00E6311E /* back_bar_item_bg.png in Resources */,
 				CEC775DD16A7FB7C00E6311E /* back_bar_item_bg@2x.png in Resources */,
+				C0FBF64016A843760041954F /* searchBarBG.png in Resources */,
+				C0FBF64116A843760041954F /* searchBarIcon.png in Resources */,
+				C0FBF64216A843760041954F /* searchBarIcon@2x.png in Resources */,
+				C0FBF64316A843760041954F /* searchTextBG.png in Resources */,
+				C0FBF64416A843760041954F /* user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +625,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FBF65216A848FB0041954F /* GHPushedViewController.m in Sources */,
+				C0FBF64B16A848C70041954F /* GHRootViewController.m in Sources */,
+				C0FBF64D16A848C70041954F /* GHMenuViewController.m in Sources */,
+				C0FBF64616A848AD0041954F /* GHRevealViewController.m in Sources */,
+				C0FBF64816A848AD0041954F /* GHSidebarSearchViewController.m in Sources */,
 				CE06353C16A3DCD6009ACB88 /* main.m in Sources */,
 				CE06354016A3DCD6009ACB88 /* AppDelegate.m in Sources */,
 				CE06354E16A3DD6A009ACB88 /* PhotoInfoPaser.m in Sources */,
@@ -583,6 +670,7 @@
 				CEC775CF16A7E5CE00E6311E /* SDWebImagePrefetcher.m in Sources */,
 				CEC775D016A7E5CE00E6311E /* UIButton+WebCache.m in Sources */,
 				CEC775D116A7E5CE00E6311E /* UIImageView+WebCache.m in Sources */,
+				C0FBF62F16A833460041954F /* GHMenuCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,8 +710,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -653,10 +741,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IXiuTu/IXiuTu-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "IXiuTu/IXiuTu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -666,10 +756,12 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IXiuTu/IXiuTu-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "IXiuTu/IXiuTu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

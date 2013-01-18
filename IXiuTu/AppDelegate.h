@@ -12,7 +12,13 @@
 #import "WaterFlowViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    NSArray *classtype; //记录主题分类
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSArray *classtype;
+
+- (void) getClassType;
 
 @end

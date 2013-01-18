@@ -9,13 +9,17 @@
 #import "WaterFlowViewController.h"
 #import "PhotoInfoPaser.h"
 #import "SDWebImageManager.h"
+#import "GHPushedViewController.h"
 
+#pragma mark -
+#pragma mark Private Interface
 @interface WaterFlowViewController ()
-
+- (void)pushViewController;
+- (void)revealSidebar;
 @end
 
 @implementation WaterFlowViewController
-@synthesize tagDelegate;
+@synthesize tagDelegate, photoTypeArray, thumbnailPicArray, middlePicArray, photoInfoResponse;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,63 +39,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = [tagDelegate returnButtonTitle];
+    //self.title = [tagDelegate returnButtonTitle];
+    //self.title = @"你们好";
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"imageListBgView.png"]];
     
-    UIButton *leftButton = [[UIButton alloc]init];
-    leftButton.frame = CGRectMake(0, 0, 60, 30);
-    [leftButton setBackgroundImage:[UIImage imageNamed:@"back_bar_item_bg.png"] forState:UIControlStateNormal];
+    //UIButton *leftButton = [[UIButton alloc]init];
+    //leftButton.frame = CGRectMake(0, 0, 60, 30);
+    //[leftButton setBackgroundImage:[UIImage imageNamed:@"back_bar_item_bg.png"] forState:UIControlStateNormal];
 //    NSString *titleStr = @"返回";
-    [leftButton setTitle:@"  返回" forState:UIControlStateNormal];
-    leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    [leftButton addTarget:self action:@selector(onLeftButton) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    //[leftButton setTitle:@"  返回" forState:UIControlStateNormal];
+    //leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    //[leftButton addTarget:self action:@selector(onLeftButton) forControlEvents:UIControlEventTouchUpInside];
+    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
     
     self.photoTypeArray = [[NSMutableArray alloc]init];
     self.thumbnailPicArray = [[NSMutableArray alloc]init];
     self.middlePicArray = [[NSMutableArray alloc]init];
     
-    switch ([tagDelegate returnButtonTag]) {
-        case 100:
-            [self getPhotoClasstype:@"体育" page:@"1"];
-            break;
-        case 101:
-            [self getPhotoClasstype:@"吃货" page:@"1"];
-            break;
-        case 102:
-            [self getPhotoClasstype:@"名车" page:@"1"];
-            break;
-        case 103:
-            [self getPhotoClasstype:@"幽默搞笑" page:@"1"];
-            break;
-        case 104:
-            [self getPhotoClasstype:@"影视" page:@"1"];
-            break;
-        case 105:
-            [self getPhotoClasstype:@"摄影" page:@"1"];
-            break;
-        case 106:
-            [self getPhotoClasstype:@"时尚" page:@"1"];
-            break;
-        case 107:
-            [self getPhotoClasstype:@"明星" page:@"1"];
-            break;
-        case 108:
-            [self getPhotoClasstype:@"游戏" page:@"1"];
-            break;
-        case 109:
-            [self getPhotoClasstype:@"科技" page:@"1"];
-            break;
-        case 110:
-            [self getPhotoClasstype:@"美女" page:@"1"];
-            break;
-        case 111:
-            [self getPhotoClasstype:@"财经" page:@"1"];
-            break;
-            
-        default:
-            break;
-    }
+    [self getPhotoClasstype:self.title page:@"1"];
+    
     [self.photoTypeArray release];
     [self.thumbnailPicArray release];
     [self.middlePicArray release];
@@ -229,5 +195,30 @@
         return YES;
     }
 }
+
+#pragma mark Memory Management
+- (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock {
+    if (self = [super initWithNibName:nil bundle:nil]) {
+		self.title = title;
+		_revealBlock = [revealBlock copy];
+		self.navigationItem.leftBarButtonItem =
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                      target:self
+                                                      action:@selector(revealSidebar)];
+	}
+	return self;
+}
+
+#pragma mark Private Methods
+- (void)pushViewController {
+	NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
+	UIViewController *vc = [[GHPushedViewController alloc] initWithTitle:vcTitle];
+	[self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)revealSidebar {
+	_revealBlock();
+}
+
 
 @end
