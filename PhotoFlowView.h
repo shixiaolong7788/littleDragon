@@ -1,24 +1,29 @@
 //
-//  PhotoFlowView.h
-//  KuXiang
+//  PhotoFlowView1.h
+//  IXiuTu
 //
-//  Created by 欧然 Wu on 12-3-8.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Created by shixiaolong on 13-1-21.
+//  Copyright (c) 2013年 shixiaolong. All rights reserved.
 //
+
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "UIWebImageView.h"
+#import "EGORefreshTableHeaderView.h"
+#import "DetailViewController.h"
 
+@protocol LLWaterFlowViewDelegate;
 @class LLWaterFlowCell;
 
-@interface PhotoFlowView : UIScrollView<UIScrollViewDelegate>{
+@interface PhotoFlowView : UIScrollView<UIScrollViewDelegate,EGORefreshTableHeaderDelegate>{
     float y1;
     float y2;
     float y3;
     float y4;
+    int _nColumns ; // 列数
     
     UIViewController     *targetVC;
-    SEL                   action; 
+    SEL                   action;
     
     
     NSMutableArray       *imageArray;
@@ -26,13 +31,24 @@
     
     NSMutableDictionary *_dicReuseCells; //重用的cell
     NSMutableArray *_onScreenCells; //重用的cell
+    EGORefreshTableHeaderView * _refreshHeaderView;
+	BOOL _reloading;
+    id <LLWaterFlowViewDelegate> _flowdelegate;
+    LLWaterFlowCell * LLCell;
+    DetailViewController *detailVC;
 }
+
 
 @property (nonatomic, retain) NSMutableDictionary *dicReuseCells;
 @property (nonatomic, retain) NSMutableArray *onScreenCells;
+@property (nonatomic, retain) id <LLWaterFlowViewDelegate> flowdelegate;
+@property (nonatomic, retain) NSMutableArray *arrCellHeight;
+@property (nonatomic, retain) NSMutableArray *arrVisibleCells;
 
 - (id)initWithFrame:(CGRect)frame target:(UIViewController*)target action:(SEL)act;
 - (void)setImages:(NSArray*)images;
+- (void)reloadTableViewDataSource;
+- (void)doneLoadingTableViewData;
 
 
 //获取重用的cell

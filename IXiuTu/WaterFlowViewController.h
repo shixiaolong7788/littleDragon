@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PhotoFlowView.h"
+#import "DetailViewController.h"
 //#import "BaseViewController.h"
 
 typedef void (^RevealBlock)();
@@ -19,7 +20,7 @@ typedef void (^RevealBlock)();
 
 @end
 
-@interface WaterFlowViewController : UIViewController
+@interface WaterFlowViewController : UIViewController<LLWaterFlowViewDelegate,passMiddleArrayDelegate>
 {
     //add by caijunjie
     //2013-01-17
@@ -34,14 +35,19 @@ typedef void (^RevealBlock)();
     NSMutableArray *photoTypeArray;
     NSMutableArray *thumbnailPicArray;
     NSMutableArray *middlePicArray;
+    NSMutableArray *photoTextArray;
+    NSMutableArray *middlePicArrayImg;
     NSString *photoInfoResponse;
+    DetailViewController *detailVC;
 }
 
 @property (nonatomic,retain)id<returnButtonTagDelegate>tagDelegate;
 @property (nonatomic,retain)NSMutableArray *photoTypeArray;
 @property (nonatomic,retain)NSMutableArray *thumbnailPicArray;
 @property (nonatomic,retain)NSMutableArray *middlePicArray;
+@property (nonatomic,retain)NSMutableArray *photoTextArray;
 @property (nonatomic,retain)NSString *photoInfoResponse;
+@property (nonatomic,retain)NSMutableArray *middlePicArrayImg;
 
 - (void)getPhotoType;
 - (void)getPhotoClasstype:(NSString *)classType page:(NSString *)page;
