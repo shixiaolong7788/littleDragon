@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "MDCParallaxView.h"
+#import "ICommentView.h"
 
 @interface DetailViewController () <UIScrollViewDelegate>
 
@@ -20,6 +21,8 @@
 @synthesize thumbnailPicArray = _thumbnailPicArray;
 @synthesize middlePicArray = _middlePicArray;
 @synthesize photoTextArray = _photoTextArray;
+@synthesize profilePicArray = _profilePicArray;
+@synthesize profileNameArray = _profileNameArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,9 +51,10 @@
     middlePicArray = [[NSUserDefaults standardUserDefaults]objectForKey:@"middlePicArray"];
     photoTextArray = [[NSMutableArray alloc] init];
     photoTextArray = [[NSUserDefaults standardUserDefaults]objectForKey:@"photoTextArray"];
-    NSLog(@"middleArray = %@",middlePicArray);
+    profilePicArray = [[NSMutableArray alloc] init];
+    profilePicArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"profilePicArray"];
+    profileNameArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"profileNameArray"];
     
-
 }
 
 - (void)onReturn
@@ -60,6 +64,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+   
+    
+     
     NSString *urlString = [middlePicArray objectAtIndex:[[NSUserDefaults standardUserDefaults]integerForKey:@"cellTag"]-100];
     NSURL *url = [NSURL URLWithString:urlString];
     NSLog(@"我拿到了 %@",url);
@@ -71,7 +78,16 @@
     backgroundImageView.image = backgroundImage;
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     
-    CGRect textRect = CGRectMake(0, 0, self.view.frame.size.width, 400.0f);
+    ICommentView *icv = [[[NSBundle mainBundle] loadNibNamed:@"ICommentView" owner:self options:nil] objectAtIndex:0];
+    icv.sName = [profileNameArray objectAtIndex:[[NSUserDefaults standardUserDefaults]integerForKey:@"cellTag"]-100];
+    icv.sImgUrl = [profilePicArray objectAtIndex:[[NSUserDefaults standardUserDefaults]integerForKey:@"cellTag"]-100];
+    icv.sComment = [photoTextArray objectAtIndex:[[NSUserDefaults standardUserDefaults]integerForKey:@"cellTag"]-100];
+    CGRect textRect = CGRectMake(0, 0, self.view.frame.size.width, 200.0f);
+    icv.frame = textRect;
+    //[self.view addSubview:icv];
+    
+    /*
+    textRect = CGRectMake(0, 0, self.view.frame.size.width, 200.0f);
     UITextView *textView = [[UITextView alloc] initWithFrame:textRect];
     NSString *text = [photoTextArray objectAtIndex:[[NSUserDefaults standardUserDefaults]integerForKey:@"cellTag"]-100];
     textView.text = text;
@@ -79,14 +95,17 @@
     textView.font = [UIFont systemFontOfSize:14.0f];
     textView.textColor = [UIColor darkTextColor];
     textView.editable = NO;
+    */
+        
     
     MDCParallaxView *parallaxView = [[MDCParallaxView alloc] initWithBackgroundView:backgroundImageView
-                                                                     foregroundView:textView];
+                                                                     foregroundView:icv];
     parallaxView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     parallaxView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     parallaxView.backgroundHeight = 250.0f;
     parallaxView.scrollViewDelegate = self;
     [self.view addSubview:parallaxView];
+    
 	
 }
 

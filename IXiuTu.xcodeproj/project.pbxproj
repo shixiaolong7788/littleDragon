@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C001040C16B1793A001E2536 /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = C001040A16B17915001E2536 /* MDCParallaxView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C001040E16B1798B001E2536 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = C001040D16B1798B001E2536 /* background.png */; };
+		C05A0CC816B56F75008F500C /* ICommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = C05A0CC716B56F75008F500C /* ICommentView.m */; };
 		C0FBF62F16A833460041954F /* GHMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FBF62E16A833460041954F /* GHMenuCell.m */; };
 		C0FBF64016A843760041954F /* searchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FBF63B16A843760041954F /* searchBarBG.png */; };
 		C0FBF64116A843760041954F /* searchBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FBF63C16A843760041954F /* searchBarIcon.png */; };
@@ -21,6 +22,7 @@
 		C0FBF64D16A848C70041954F /* GHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FBF63116A8336C0041954F /* GHMenuViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C0FBF65216A848FB0041954F /* GHPushedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0FBF65016A848E50041954F /* GHPushedViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C0FBF65416A849F20041954F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FBF65316A849F20041954F /* QuartzCore.framework */; };
+		C0FE8DF616B6C5D2001BA916 /* ICommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0FE8DF516B6C5D2001BA916 /* ICommentView.xib */; };
 		CE06353016A3DCD6009ACB88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE06352F16A3DCD6009ACB88 /* UIKit.framework */; };
 		CE06353216A3DCD6009ACB88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE06353116A3DCD6009ACB88 /* Foundation.framework */; };
 		CE06353416A3DCD6009ACB88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE06353316A3DCD6009ACB88 /* CoreGraphics.framework */; };
@@ -107,6 +109,8 @@
 		C001040916B17915001E2536 /* MDCParallaxView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDCParallaxView.h; sourceTree = "<group>"; };
 		C001040A16B17915001E2536 /* MDCParallaxView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDCParallaxView.m; sourceTree = "<group>"; };
 		C001040D16B1798B001E2536 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		C05A0CC616B56F75008F500C /* ICommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICommentView.h; sourceTree = "<group>"; };
+		C05A0CC716B56F75008F500C /* ICommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICommentView.m; sourceTree = "<group>"; };
 		C0FBF62816A8331A0041954F /* GHRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHRevealViewController.h; sourceTree = "<group>"; };
 		C0FBF62916A8331A0041954F /* GHRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHRevealViewController.m; sourceTree = "<group>"; };
 		C0FBF62A16A8331A0041954F /* GHSidebarSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHSidebarSearchViewController.h; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		C0FBF64F16A848E50041954F /* GHPushedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHPushedViewController.h; sourceTree = "<group>"; };
 		C0FBF65016A848E50041954F /* GHPushedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHPushedViewController.m; sourceTree = "<group>"; };
 		C0FBF65316A849F20041954F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C0FE8DF516B6C5D2001BA916 /* ICommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICommentView.xib; sourceTree = "<group>"; };
 		CE06352B16A3DCD6009ACB88 /* IXiuTu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IXiuTu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE06352F16A3DCD6009ACB88 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE06353116A3DCD6009ACB88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -286,6 +291,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C05A0CB916B56D12008F500C /* 评论视图 */ = {
+			isa = PBXGroup;
+			children = (
+				C05A0CC616B56F75008F500C /* ICommentView.h */,
+				C05A0CC716B56F75008F500C /* ICommentView.m */,
+				C0FE8DF516B6C5D2001BA916 /* ICommentView.xib */,
+			);
+			name = "评论视图";
+			sourceTree = "<group>";
+		};
 		C0FBF62616A832F60041954F /* GHSidebarNav */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +336,7 @@
 		CE06352016A3DCD6009ACB88 = {
 			isa = PBXGroup;
 			children = (
+				C05A0CB916B56D12008F500C /* 评论视图 */,
 				CE93601016A8E329002F9A33 /* RefreshTableHeaderView */,
 				C0FBF63816A842F70041954F /* Utils */,
 				C0FBF62616A832F60041954F /* GHSidebarNav */,
@@ -682,6 +698,7 @@
 				CE93600E16A8E306002F9A33 /* whiteArrow.png in Resources */,
 				CE93600F16A8E306002F9A33 /* whiteArrow@2x.png in Resources */,
 				C001040E16B1798B001E2536 /* background.png in Resources */,
+				C0FE8DF616B6C5D2001BA916 /* ICommentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +758,7 @@
 				CE93601316A8E336002F9A33 /* EGORefreshTableHeaderView.m in Sources */,
 				CEAE701516AD358000E5D7CF /* PhotoFlowView.m in Sources */,
 				CEA8C97116AE58D000CCF569 /* DetailViewController.m in Sources */,
+				C05A0CC816B56F75008F500C /* ICommentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

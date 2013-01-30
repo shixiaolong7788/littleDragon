@@ -19,7 +19,14 @@
 @end
 
 @implementation WaterFlowViewController
-@synthesize tagDelegate, photoTypeArray, thumbnailPicArray, middlePicArray, photoInfoResponse;
+@synthesize tagDelegate;
+@synthesize photoTypeArray;
+@synthesize thumbnailPicArray;
+@synthesize middlePicArray;
+@synthesize photoInfoResponse;
+@synthesize profilePicArray;
+@synthesize photoTextArray;
+@synthesize profileNameArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,17 +51,23 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"imageListBgView.png"]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBar_bg.png"] forBarMetrics:UIBarMetricsDefault];
     [self getPhotoClasstype:self.title page:@"1"];
+    
     self.photoTypeArray = [[NSMutableArray alloc]init];
     self.thumbnailPicArray = [[NSMutableArray alloc]init];
     self.middlePicArray = [[NSMutableArray alloc]init];
     self.photoTextArray = [[NSMutableArray alloc]init];
     self.middlePicArrayImg = [[NSMutableArray alloc]init];
+    self.profilePicArray = [[NSMutableArray alloc]init];
+    self.profileNameArray = [[NSMutableArray alloc]init];
     
     [self.photoTypeArray release];
     [self.thumbnailPicArray release];
     [self.middlePicArray release];
     [self.photoTextArray release];
     [self.middlePicArrayImg release];
+    [self.profilePicArray release];
+    [self.profileNameArray release];
+    
     
     detailVC = [[DetailViewController alloc]init];
     detailVC.arrayDelegate = self;
@@ -111,48 +124,38 @@
     [request setPostValue:page forKey:@"page"];
     
     [request setCompletionBlock:^{
-//        NSLog(@"responstring string = %@",[request responseString]);
         self.photoInfoResponse = [request responseString];
         NSError *error = [[NSError alloc]init];
         SBJSON *jsonParser = [[SBJSON alloc]init];
         NSMutableDictionary *rootString = [jsonParser objectWithString:self.photoInfoResponse error:&error];
         NSMutableArray *dataArray = [rootString objectForKey:@"data"];
         for (photoIndex = 0; photoIndex <[dataArray count]; photoIndex++) {
-            
             NSDictionary *dataDic = [dataArray objectAtIndex:photoIndex];
             NSString *thumbnailPicString = [dataDic objectForKey:@"thumbnail_pic"];
             NSString *middlePicString = [dataDic objectForKey:@"bmiddle_pic"];
             NSString *photoText = [dataDic objectForKey:@"text"];
-            
+            NSString *profilePicString = [dataDic objectForKey:@"profile_image_url"];
+            NSString *profileNameString = [dataDic objectForKey:@"user_name"];
             [self.thumbnailPicArray addObject:thumbnailPicString];
             [self.middlePicArray addObject:middlePicString];
             [self.photoTextArray addObject:photoText];
+            [self.profilePicArray addObject:profilePicString];
+            [self.profileNameArray addObject:profileNameString];
             
         }
-        
-//        for (photoIndex=0; photoIndex<[self.middlePicArrayImg count]; photoIndex++){
-//        NSURL *url = [NSURL URLWithString:[self.middlePicArray objectAtIndex:photoIndex]];
-//        NSData *data = [NSData dataWithContentsOfURL:url];//载入数据
-//        UIImage *img = [UIImage imageWithData:data];
-//        [self.middlePicArrayImg addObject:img];
-//        }
-        
-        
         NSUserDefaults *userDefault =  [NSUserDefaults standardUserDefaults];
-        [userDefault setObject:self.thumbnailPicArray forKey:@"thumbnailPicArray"];
-        [userDefault setObject:self.middlePicArray forKey:@"middlePicArray"];
-        [userDefault setObject:self.photoTextArray forKey:@"photoTextArray"];
-//        [userDefault setObject:self.middlePicArrayImg forKey:@"middlePicarrayImg"];
-//        NSLog(@"thumbNailPicArray = %@",self.thumbnailPicArray);
-        //    NSLog(@"middlePicArray = %@",self.middlePicArray);
-        NSLog(@"photoTextArray = %@",self.photoTextArray);
-        
+        [userDefault setObject:self.thumbnailPicArray forKey:@"thumbnailPicArray"]; //缩略图
+        [userDefault setObject:self.middlePicArray forKey:@"middlePicArray"];  //中型图片
+        [userDefault setObject:self.photoTextArray forKey:@"photoTextArray"]; //图片文字
+        [userDefault setObject:self.profilePicArray forKey:@"profilePicArray"]; //头像
+        [userDefault setObject:self.profileNameArray forKey:@"profileNameArray"]; //头像
         [self photoFlowClass];
-        
     }];
+    
     [request setFailedBlock:^{
         NSLog(@"请求失败");
     }];
+    
     [request startAsynchronous];
 }
 

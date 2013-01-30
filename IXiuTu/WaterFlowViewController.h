@@ -32,20 +32,27 @@ typedef void (^RevealBlock)();
     int photoTypeIndex;
     int photoIndex;
     NSString *photoTypeResponsingString;
-    NSMutableArray *photoTypeArray;
-    NSMutableArray *thumbnailPicArray;
-    NSMutableArray *middlePicArray;
-    NSMutableArray *photoTextArray;
+    
+    NSMutableArray *photoTypeArray;  //图片类型
+    NSMutableArray *thumbnailPicArray; //缩略图片
+    NSMutableArray *middlePicArray; //原图
+    NSMutableArray *photoTextArray; //图片的文字
+    NSMutableArray *profilePicArray; //头像图片
+    NSMutableArray *profileNameArray; //名字
+    
     NSMutableArray *middlePicArrayImg;
     NSString *photoInfoResponse;
     DetailViewController *detailVC;
 }
 
 @property (nonatomic,retain)id<returnButtonTagDelegate>tagDelegate;
-@property (nonatomic,retain)NSMutableArray *photoTypeArray;
-@property (nonatomic,retain)NSMutableArray *thumbnailPicArray;
-@property (nonatomic,retain)NSMutableArray *middlePicArray;
-@property (nonatomic,retain)NSMutableArray *photoTextArray;
+@property (nonatomic,retain)NSMutableArray *photoTypeArray;  //图片类型
+@property (nonatomic,retain)NSMutableArray *thumbnailPicArray; //缩略图
+@property (nonatomic,retain)NSMutableArray *middlePicArray;  //原图
+@property (nonatomic,retain)NSMutableArray *photoTextArray; //图片的文字
+@property (nonatomic,retain)NSMutableArray *profilePicArray; //头像图片
+@property (nonatomic,retain)NSMutableArray *profileNameArray; //名字
+
 @property (nonatomic,retain)NSString *photoInfoResponse;
 @property (nonatomic,retain)NSMutableArray *middlePicArrayImg;
 
