@@ -1,4 +1,0 @@
-littleDragon
-============
-
-concentrately，delegently
