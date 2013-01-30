@@ -79,7 +79,7 @@
     for (int i = 0; i < [self.classtype count]; i++) {
         NSDictionary *item = [self.classtype objectAtIndex:i];
         NSLog(@"普通的遍历：i = %d 时的数组对象为: %@",i,[item objectForKey:@"value"]);
-        WaterFlowViewController *waterFlow = [[WaterFlowViewController alloc] init];
+//        WaterFlowViewController *waterFlow = [[WaterFlowViewController alloc] init];
         //waterFlow.tagDelegate = self;
        
         [temp addObject:[[UINavigationController alloc] initWithRootViewController:[[WaterFlowViewController alloc] initWithTitle:[item objectForKey:@"value"] withRevealBlock:revealBlock]]];
