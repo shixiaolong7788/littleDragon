@@ -10,6 +10,8 @@
 #import "PhotoFlowView.h"
 //#import "BaseViewController.h"
 
+typedef void (^RevealBlock)();
+
 @protocol returnButtonTagDelegate <NSObject>
 
 - (NSInteger)returnButtonTag;
@@ -19,6 +21,12 @@
 
 @interface WaterFlowViewController : UIViewController
 {
+    //add by caijunjie
+    //2013-01-17
+    //增加返回代理
+@private
+	RevealBlock _revealBlock;
+    
     id<returnButtonTagDelegate>tagDelegate;
     int photoTypeIndex;
     int photoIndex;
@@ -39,5 +47,9 @@
 - (void)getPhotoClasstype:(NSString *)classType page:(NSString *)page;
 - (void)photoInfoParser;
 
+//add by caijunjie
+//2013-01-17
+//增加返回代理
+- (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock;
 
 @end
