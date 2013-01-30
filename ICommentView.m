@@ -51,14 +51,14 @@
     NSLog(@"imgurl: %@",self.sImgUrl);
     NSLog(@"name: %@",self.sName);
     NSLog(@"comment: %@",self.sComment);
-    double imageSize = 80;
+    double imageSize = 70;
     logo.clipsToBounds = NO;
     NSURL *url = [NSURL URLWithString:self.sImgUrl];
-    NSLog(@"我拿到了 %@",url);
+    NSLog(@"我拿到了了 %@",url);
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *img = [UIImage imageWithData:data];
     UIImage *image = [self scaleImage:img toSize:CGSizeMake(imageSize, imageSize)];
-    logo = [[UIImageView alloc] initWithFrame:CGRectMake(20, -40, imageSize,imageSize)];
+    logo = [[UIImageView alloc] initWithFrame:CGRectMake(20, -35, imageSize,imageSize)];
     [logo setImage:image];
     NSLog(@"width: %f",logo.image.size.width);
     NSLog(@"height: %f",logo.image.size.height);

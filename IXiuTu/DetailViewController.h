@@ -11,6 +11,11 @@
 #import "ASIFormDataRequest.h"
 #import "JSON.h"
 
+@protocol passActiVityViewDelegate <NSObject>
+
+- (UIActivityIndicatorView *)passActivity;
+
+@end
 
 @protocol passMiddleArrayDelegate <NSObject>
 
@@ -28,7 +33,7 @@
 {
 
 @private
-    
+    id<passActiVityViewDelegate>activityDelegate;
     id<returnCelltagDelegate>   cellTagDelegate;
     id<passMiddleArrayDelegate> arrayDelegate;
     int     photoTypeIndex;
@@ -54,5 +59,6 @@
 @property (nonatomic,retain) NSString   *photoInfoResponse;
 @property (nonatomic,retain)id<passMiddleArrayDelegate> arrayDelegate;
 @property (nonatomic,retain)id<returnCelltagDelegate>   cellTagDelegate;
+@property (nonatomic,retain)id<passActiVityViewDelegate>activityDelegate;
 
 @end

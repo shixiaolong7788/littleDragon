@@ -68,9 +68,10 @@
     [self.profilePicArray release];
     [self.profileNameArray release];
     
+    DetailViewController *detailVC = [[DetailViewController alloc]init];
+    detailVC.activityDelegate = self;
     
-    detailVC = [[DetailViewController alloc]init];
-    detailVC.arrayDelegate = self;
+    
 //    [detailVC release];
     
 }
@@ -208,7 +209,21 @@
     NSLog(@"BEI DIAN JI LA ");
     NSLog(@"indexpath.row = %d",indexPath.row);
     
+//    activityView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//    activityView.center = CGPointMake(160, 200);
+//    [activityView startAnimating];
+//    [self.view addSubview:activityView];
+    
+    
+    detailVC = [[DetailViewController alloc]init];
+    detailVC.arrayDelegate = self;
     [self.navigationController pushViewController:detailVC animated:YES];
+    
+}
+
+- (UIActivityIndicatorView *)passActivity
+{
+    return activityView;
 }
 
 - (void)viewDidUnload
@@ -221,7 +236,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated

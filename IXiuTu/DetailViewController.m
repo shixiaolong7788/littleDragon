@@ -64,25 +64,25 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-   
-    
-     
+//    [[self.activityDelegate passActivity] stopAnimating];
     NSString *urlString = [middlePicArray objectAtIndex:[[NSUserDefaults standardUserDefaults]integerForKey:@"cellTag"]-100];
     NSURL *url = [NSURL URLWithString:urlString];
     NSLog(@"我拿到了 %@",url);
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *backgroundImage = [UIImage imageWithData:data];
 	//UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
-    CGRect backgroundRect = CGRectMake(0, 0, self.view.frame.size.width, backgroundImage.size.height);
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    CGRect backgroundRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width/backgroundImage.size.width*backgroundImage.size.height);
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:backgroundRect];
     backgroundImageView.image = backgroundImage;
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:backgroundImageView];
     
-    ICommentView *icv = [[[NSBundle mainBundle] loadNibNamed:@"ICommentView" owner:self options:nil] objectAtIndex:0];
+    ICommentView *icv = [[[NSBundle mainBundle]loadNibNamed:@"ICommentView" owner:self options:nil] objectAtIndex:0];
     icv.sName = [profileNameArray objectAtIndex:[[NSUserDefaults standardUserDefaults]integerForKey:@"cellTag"]-100];
     icv.sImgUrl = [profilePicArray objectAtIndex:[[NSUserDefaults standardUserDefaults]integerForKey:@"cellTag"]-100];
     icv.sComment = [photoTextArray objectAtIndex:[[NSUserDefaults standardUserDefaults]integerForKey:@"cellTag"]-100];
-    CGRect textRect = CGRectMake(0, 0, self.view.frame.size.width, 200.0f);
+    CGRect textRect = CGRectMake(0, 0, self.view.frame.size.width, 380.0f);
     icv.frame = textRect;
     //[self.view addSubview:icv];
     
@@ -98,14 +98,23 @@
     */
         
     
-    MDCParallaxView *parallaxView = [[MDCParallaxView alloc] initWithBackgroundView:backgroundImageView
+    MDCParallaxView *parallaxView = [[MDCParallaxView alloc] initWithBackgroundView:nil
                                                                      foregroundView:icv];
     parallaxView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     parallaxView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    parallaxView.backgroundHeight = 250.0f;
+    NSLog(@"----height = %f",backgroundImage.size.height);
+    if (backgroundImage.size.height>400) {
+        parallaxView.backgroundHeight = 220.0f;
+    }else if (backgroundImage.size.height>200&&backgroundImage.size.height<=400)
+    {
+        parallaxView.backgroundHeight=backgroundImage.size.height-85;
+    }else if(backgroundImage.size.height<=200)
+    {
+        parallaxView.backgroundHeight = backgroundImage.size.height;
+    }
+
     parallaxView.scrollViewDelegate = self;
     [self.view addSubview:parallaxView];
-    
 	
 }
 

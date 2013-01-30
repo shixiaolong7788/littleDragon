@@ -320,10 +320,10 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-//	if([_flowdelegate  conformsToProtocol:@protocol(UIScrollViewDelegate)]  && [_flowdelegate respondsToSelector:@selector(scrollViewWillBeginDragging:)])
-//	{
-//		[(id<UIScrollViewDelegate>) _flowdelegate  scrollViewWillBeginDragging:self];
-//	}
+	if([_flowdelegate  conformsToProtocol:@protocol(UIScrollViewDelegate)]  && [_flowdelegate respondsToSelector:@selector(scrollViewWillBeginDragging:)])
+	{
+		[(id<UIScrollViewDelegate>) _flowdelegate  scrollViewWillBeginDragging:self];
+	}
 }
 
 #pragma mark -

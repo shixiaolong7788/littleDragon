@@ -20,7 +20,7 @@ typedef void (^RevealBlock)();
 
 @end
 
-@interface WaterFlowViewController : UIViewController<LLWaterFlowViewDelegate,passMiddleArrayDelegate>
+@interface WaterFlowViewController : UIViewController<LLWaterFlowViewDelegate,passMiddleArrayDelegate,passActiVityViewDelegate>
 {
     //add by caijunjie
     //2013-01-17
@@ -43,6 +43,7 @@ typedef void (^RevealBlock)();
     NSMutableArray *middlePicArrayImg;
     NSString *photoInfoResponse;
     DetailViewController *detailVC;
+    UIActivityIndicatorView *activityView;
 }
 
 @property (nonatomic,retain)id<returnButtonTagDelegate>tagDelegate;
