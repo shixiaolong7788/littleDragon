@@ -10,4 +10,7 @@
 
 @interface ThumbPhotoInfo : NSObject
 
+@property (nonatomic)int number;
+@property (nonatomic,retain)NSString *urlString;
+
 @end

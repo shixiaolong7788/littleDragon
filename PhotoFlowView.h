@@ -10,12 +10,23 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIWebImageView.h"
 #import "EGORefreshTableHeaderView.h"
+#import "LoadMoreTableFooterView.h"
 #import "DetailViewController.h"
+//#import "WaterFlowViewController.h"
+#import "ThumbPhotoInfo.h"
+
+@class WaterFlowViewController;
+
+@protocol passScrollViewDelegate <NSObject>
+
+- (void)loadImageView;
+
+@end
 
 @protocol LLWaterFlowViewDelegate;
 @class LLWaterFlowCell;
 
-@interface PhotoFlowView : UIScrollView<UIScrollViewDelegate,EGORefreshTableHeaderDelegate>{
+@interface PhotoFlowView : UIScrollView<UIScrollViewDelegate,EGORefreshTableHeaderDelegate,LoadMoreTableFooterDelegate>{
     float y1;
     float y2;
     float y3;
@@ -32,10 +43,15 @@
     NSMutableDictionary *_dicReuseCells; //重用的cell
     NSMutableArray *_onScreenCells; //重用的cell
     EGORefreshTableHeaderView * _refreshHeaderView;
+    LoadMoreTableFooterView *loadMoreView;
+    
 	BOOL _reloading;
     id <LLWaterFlowViewDelegate> _flowdelegate;
     LLWaterFlowCell * LLCell;
     DetailViewController *detailVC;
+    NSInteger currentPage;
+    BOOL isDraggingEnd;
+    id<passScrollViewDelegate>passScrollDelegate;
 }
 
 
@@ -44,6 +60,7 @@
 @property (nonatomic, retain) id <LLWaterFlowViewDelegate> flowdelegate;
 @property (nonatomic, retain) NSMutableArray *arrCellHeight;
 @property (nonatomic, retain) NSMutableArray *arrVisibleCells;
+@property (nonatomic,retain) id<passScrollViewDelegate>passScrollDelegate;
 
 - (id)initWithFrame:(CGRect)frame target:(UIViewController*)target action:(SEL)act;
 - (void)setImages:(NSArray*)images;

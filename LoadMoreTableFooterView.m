@@ -219,7 +219,6 @@
         }
         [self startAnimatingWithScrollView:scrollView];
 	}
-	
 }
 
 - (void)egoRefreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView {	

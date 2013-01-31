@@ -13,6 +13,7 @@
 @end
 
 @implementation PhotoInfoPaser
+@synthesize photoInfoResponse,photoTypeArray,thumbnailPicArray,middlePicArray;
 
 
 static PhotoInfoPaser *phototInstance;
@@ -44,7 +45,6 @@ static PhotoInfoPaser *phototInstance;
     self.photoTypeArray = [[NSMutableArray alloc]init];
     self.thumbnailPicArray = [[NSMutableArray alloc]init];
     self.middlePicArray = [[NSMutableArray alloc]init];
-    WaterFlowViewController *walterFlow = [[WaterFlowViewController alloc]init];
     [self getPhotoType];
 }
 

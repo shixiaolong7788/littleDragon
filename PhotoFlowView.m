@@ -17,16 +17,27 @@
         targetVC = target;
         action   = act;
         self.delegate = self;
+        currentPage = 1;
+        isDraggingEnd = NO;
     }
     
     if (_refreshHeaderView == nil) {
-        EGORefreshTableHeaderView * view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0, 0-self.bounds.size.height, self.frame.size.width, self.bounds.size.height)];
+        EGORefreshTableHeaderView * view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0,0- self.bounds.size.height, self.frame.size.width, self.bounds.size.height)];
         view.delegate = self;
         [self addSubview:view];
         _refreshHeaderView = view;
         //        [view release];
     }
     [_refreshHeaderView refreshLastUpdatedDate];
+    
+    if (loadMoreView == nil) {
+        /* Load more view init */
+        LoadMoreTableFooterView *view = [[LoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height, self.frame.size.width, self.bounds.size.height)];
+//        view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        view.delegate = self;
+        [self addSubview:view];
+        loadMoreView = view;
+    }
     
     return self;
 }
@@ -239,7 +250,7 @@
                     imageView  = [[LLWaterFlowCell alloc] initWithIdentifier:@"LLWaterFlowCell_Identifier"];
                     [imageView setUserInteractionEnabled:YES];
                     imageView.indexPath = [NSIndexPath indexPathForRow:imageY inSection:1];
-                    imageView.backgroundColor = [UIColor blackColor];//保证在图片未加载出来之前能接受滑动手势
+                    //imageView.backgroundColor = [UIColor blackColor];//保证在图片未加载出来之前能接受滑动手势
                     imageView.layer.borderWidth = 2;
                     imageView.layer.borderColor = [UIColor whiteColor].CGColor;
                     
@@ -316,14 +327,44 @@
 //	{
 //		[(id<UIScrollViewDelegate>) _flowdelegate  scrollViewDidEndDragging:self willDecelerate:decelerate];
 //	}
+//    WaterFlowViewController *waterVC = [[WaterFlowViewController alloc]init];
+//    [[WaterFlowViewController sharedInstance]getPhotoClasstype:@"美女" page:@"1"];
+//    ThumbPhotoInfo *thumbPInfo = [[ThumbPhotoInfo alloc]init];
+//    thumbPInfo.number = 120;
+//    thumbPInfo.urlString = @"http://ww3.sinaimg.cn/thumbnail/6208bbb0jw1e1coivwsl6j.jpg";
+    
+//    NSArray *array = [[NSArray alloc]initWithObjects:thumbPInfo,thumbPInfo,thumbPInfo,thumbPInfo, nil];
+//    [self setImages:array];
+    currentPage ++;
+    isDraggingEnd = YES;
+    NSLog(@"currentPage = %d",currentPage);
+    NSLog(@"isdraggingEnd = %d",isDraggingEnd);
+    
+    [[NSUserDefaults standardUserDefaults]setInteger:currentPage forKey:@"currentPage"];
+    [[NSUserDefaults standardUserDefaults]setInteger:isDraggingEnd forKey:@"isDraggingEnd"];
+    
+    [self.passScrollDelegate loadImageView];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
+    isDraggingEnd = NO;
+    [[NSUserDefaults standardUserDefaults]setInteger:isDraggingEnd forKey:@"isDraggingEnd"];
+    NSLog(@"isdraggingEnd = %d",isDraggingEnd);
 	if([_flowdelegate  conformsToProtocol:@protocol(UIScrollViewDelegate)]  && [_flowdelegate respondsToSelector:@selector(scrollViewWillBeginDragging:)])
 	{
 		[(id<UIScrollViewDelegate>) _flowdelegate  scrollViewWillBeginDragging:self];
 	}
+}
+
+- (NSInteger)returnCurrentPage
+{
+    return currentPage;
+}
+
+- (NSInteger)returnIsDraggingEnd
+{
+    return isDraggingEnd;
 }
 
 #pragma mark -

@@ -59,7 +59,6 @@
 		CE93600D16A8E306002F9A33 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE93600516A8E306002F9A33 /* blueArrow@2x.png */; };
 		CE93600E16A8E306002F9A33 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CE93600616A8E306002F9A33 /* whiteArrow.png */; };
 		CE93600F16A8E306002F9A33 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE93600716A8E306002F9A33 /* whiteArrow@2x.png */; };
-		CE93601316A8E336002F9A33 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE93601216A8E336002F9A33 /* EGORefreshTableHeaderView.m */; };
 		CE95EF4A16A5546E0020B648 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE95EF4916A5546E0020B648 /* MainViewController.m */; };
 		CE95EF4F16A5551E0020B648 /* bg_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = CE95EF4D16A5551E0020B648 /* bg_refresh.png */; };
 		CE95EF5016A5551E0020B648 /* bg_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE95EF4E16A5551E0020B648 /* bg_refresh@2x.png */; };
@@ -88,6 +87,7 @@
 		CE9C609116A63D6F00375C9E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9C609016A63D6F00375C9E /* Security.framework */; };
 		CE9C609716A63EBF00375C9E /* UILabel+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C609416A63EBE00375C9E /* UILabel+Additions.m */; };
 		CE9C609816A63EBF00375C9E /* UIButton+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9C609616A63EBF00375C9E /* UIButton+Additions.m */; };
+		CEA557EB16BA47BA00E305FA /* ThumbPhotoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA557EA16BA47BA00E305FA /* ThumbPhotoInfo.m */; };
 		CEA8C97116AE58D000CCF569 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8C97016AE58D000CCF569 /* DetailViewController.m */; };
 		CEAE701516AD358000E5D7CF /* PhotoFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAE701416AD358000E5D7CF /* PhotoFlowView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		CEC775B116A7D79200E6311E /* subjectMarkNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC775AF16A7D79200E6311E /* subjectMarkNormal.png */; };
@@ -103,6 +103,8 @@
 		CEC775D116A7E5CE00E6311E /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC775CA16A7E5CE00E6311E /* UIImageView+WebCache.m */; };
 		CEC775DC16A7FB7C00E6311E /* back_bar_item_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC775DA16A7FB7C00E6311E /* back_bar_item_bg.png */; };
 		CEC775DD16A7FB7C00E6311E /* back_bar_item_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC775DB16A7FB7C00E6311E /* back_bar_item_bg@2x.png */; };
+		CED1B6D116BA7B5500AEFA58 /* LoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1B6D016BA7B5500AEFA58 /* LoadMoreTableFooterView.m */; };
+		CED1B6D516BA7C9E00AEFA58 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CED1B6D416BA7C9E00AEFA58 /* EGORefreshTableHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -187,8 +189,6 @@
 		CE93600516A8E306002F9A33 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
 		CE93600616A8E306002F9A33 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		CE93600716A8E306002F9A33 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
-		CE93601116A8E336002F9A33 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		CE93601216A8E336002F9A33 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		CE95EF4816A5546E0020B648 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		CE95EF4916A5546E0020B648 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		CE95EF4D16A5551E0020B648 /* bg_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_refresh.png; sourceTree = "<group>"; };
@@ -239,6 +239,8 @@
 		CE9C609416A63EBE00375C9E /* UILabel+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Additions.m"; sourceTree = "<group>"; };
 		CE9C609516A63EBE00375C9E /* UIButton+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Additions.h"; sourceTree = "<group>"; };
 		CE9C609616A63EBF00375C9E /* UIButton+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Additions.m"; sourceTree = "<group>"; };
+		CEA557E916BA47BA00E305FA /* ThumbPhotoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbPhotoInfo.h; sourceTree = "<group>"; };
+		CEA557EA16BA47BA00E305FA /* ThumbPhotoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbPhotoInfo.m; sourceTree = "<group>"; };
 		CEA8C96F16AE58D000CCF569 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		CEA8C97016AE58D000CCF569 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		CEAE701316AD358000E5D7CF /* PhotoFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoFlowView.h; sourceTree = "<group>"; };
@@ -267,6 +269,10 @@
 		CEC775CA16A7E5CE00E6311E /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		CEC775DA16A7FB7C00E6311E /* back_bar_item_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_bar_item_bg.png; sourceTree = "<group>"; };
 		CEC775DB16A7FB7C00E6311E /* back_bar_item_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_bar_item_bg@2x.png"; sourceTree = "<group>"; };
+		CED1B6CF16BA7B5500AEFA58 /* LoadMoreTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreTableFooterView.h; sourceTree = "<group>"; };
+		CED1B6D016BA7B5500AEFA58 /* LoadMoreTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreTableFooterView.m; sourceTree = "<group>"; };
+		CED1B6D316BA7C9E00AEFA58 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		CED1B6D416BA7C9E00AEFA58 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,8 +484,10 @@
 		CE93601016A8E329002F9A33 /* RefreshTableHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				CE93601116A8E336002F9A33 /* EGORefreshTableHeaderView.h */,
-				CE93601216A8E336002F9A33 /* EGORefreshTableHeaderView.m */,
+				CED1B6D316BA7C9E00AEFA58 /* EGORefreshTableHeaderView.h */,
+				CED1B6D416BA7C9E00AEFA58 /* EGORefreshTableHeaderView.m */,
+				CED1B6CF16BA7B5500AEFA58 /* LoadMoreTableFooterView.h */,
+				CED1B6D016BA7B5500AEFA58 /* LoadMoreTableFooterView.m */,
 			);
 			name = RefreshTableHeaderView;
 			sourceTree = "<group>";
@@ -554,6 +562,8 @@
 				CE9C606E16A6379100375C9E /* UIWebImageView.m */,
 				CEAE701316AD358000E5D7CF /* PhotoFlowView.h */,
 				CEAE701416AD358000E5D7CF /* PhotoFlowView.m */,
+				CEA557E916BA47BA00E305FA /* ThumbPhotoInfo.h */,
+				CEA557EA16BA47BA00E305FA /* ThumbPhotoInfo.m */,
 			);
 			name = UIAdditions;
 			sourceTree = "<group>";
@@ -755,10 +765,12 @@
 				CEC775D016A7E5CE00E6311E /* UIButton+WebCache.m in Sources */,
 				CEC775D116A7E5CE00E6311E /* UIImageView+WebCache.m in Sources */,
 				C0FBF62F16A833460041954F /* GHMenuCell.m in Sources */,
-				CE93601316A8E336002F9A33 /* EGORefreshTableHeaderView.m in Sources */,
 				CEAE701516AD358000E5D7CF /* PhotoFlowView.m in Sources */,
 				CEA8C97116AE58D000CCF569 /* DetailViewController.m in Sources */,
 				C05A0CC816B56F75008F500C /* ICommentView.m in Sources */,
+				CEA557EB16BA47BA00E305FA /* ThumbPhotoInfo.m in Sources */,
+				CED1B6D116BA7B5500AEFA58 /* LoadMoreTableFooterView.m in Sources */,
+				CED1B6D516BA7C9E00AEFA58 /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

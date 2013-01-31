@@ -9,5 +9,7 @@
 #import "ThumbPhotoInfo.h"
 
 @implementation ThumbPhotoInfo
+@synthesize number,urlString;
+
 
 @end

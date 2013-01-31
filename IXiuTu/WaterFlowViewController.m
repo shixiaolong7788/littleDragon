@@ -27,6 +27,19 @@
 @synthesize profilePicArray;
 @synthesize photoTextArray;
 @synthesize profileNameArray;
+@synthesize photoWall;
+
+static WaterFlowViewController *sharedInstance;
++ (id) sharedInstance
+{
+    @synchronized([WaterFlowViewController class])
+    {
+        if (sharedInstance == nil) {
+            sharedInstance = [[WaterFlowViewController alloc]init];
+        }
+    }
+    return sharedInstance;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +63,12 @@
     //self.title = @"你们好";
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"imageListBgView.png"]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBar_bg.png"] forBarMetrics:UIBarMetricsDefault];
-    [self getPhotoClasstype:self.title page:@"1"];
+    NSLog(@"currentPage ====== %d",[[NSUserDefaults standardUserDefaults]integerForKey:@"currentPage"]);
+    currentPage = [NSString stringWithFormat:@"%d",[[NSUserDefaults standardUserDefaults]integerForKey:@"currentPage"]+1];
+    
+    self.photoWall = [[PhotoFlowView alloc] initWithFrame:CGRectMake(0, 0, 320, 436) target:nil action:nil];
+    [self.view addSubview:self.photoWall];
+    [self.photoWall setContentInset:UIEdgeInsetsMake(0, 0, 40, 0)];
     
     self.photoTypeArray = [[NSMutableArray alloc]init];
     self.thumbnailPicArray = [[NSMutableArray alloc]init];
@@ -59,20 +77,11 @@
     self.middlePicArrayImg = [[NSMutableArray alloc]init];
     self.profilePicArray = [[NSMutableArray alloc]init];
     self.profileNameArray = [[NSMutableArray alloc]init];
+    arr = [[NSMutableArray alloc]init];
+    loadMoreTable = [[LoadMoreTableFooterView alloc]init];
+    loadMoreTable.delegate = self;
     
-    [self.photoTypeArray release];
-    [self.thumbnailPicArray release];
-    [self.middlePicArray release];
-    [self.photoTextArray release];
-    [self.middlePicArrayImg release];
-    [self.profilePicArray release];
-    [self.profileNameArray release];
-    
-    DetailViewController *detailVC = [[DetailViewController alloc]init];
-    detailVC.activityDelegate = self;
-    
-    
-//    [detailVC release];
+    [self getPhotoClasstype:self.title page:currentPage];
     
 }
 
@@ -159,7 +168,11 @@
     
     [request startAsynchronous];
 }
-
+- (void)loadMoreTableFooterDidTriggerLoadMore:(LoadMoreTableFooterView*)view
+{
+    NSLog(@"1234567890");
+    [self getPhotoClasstype:self.title page:@"2"];
+}
 - (NSMutableArray *)returnMiddlepicarray
 {
     NSLog(@"self.middlePicAeeay = %@",self.middlePicArray);
@@ -168,23 +181,18 @@
 
 - (void)photoFlowClass
 {
-    PhotoFlowView *photoWall = [[PhotoFlowView alloc] initWithFrame:CGRectMake(0, 0, 320, 436) target:nil action:nil];
-    [self.view addSubview:photoWall];
-    [photoWall setContentInset:UIEdgeInsetsMake(0, 0, 40, 0)];
     NSLog(@"thumbNailPicArray = %@",self.thumbnailPicArray);
-    NSMutableArray *arr = [NSMutableArray array];
+    NSMutableArray *arr0 = [NSMutableArray array];
     for (photoIndex=0; photoIndex<[self.thumbnailPicArray count]; photoIndex++) {
-        
         NSURL *url = [NSURL URLWithString:[self.thumbnailPicArray objectAtIndex:photoIndex]];
         NSData *data = [NSData dataWithContentsOfURL:url];//载入数据
         UIImage *img = [UIImage imageWithData:data];
-
-        [arr addObject:[NSArray arrayWithObjects:[NSNumber numberWithInt:img.size.height],[self.thumbnailPicArray objectAtIndex:photoIndex],nil]];
+        [arr0 addObject:[NSArray arrayWithObjects:[NSNumber numberWithInt:img.size.height],[self.thumbnailPicArray objectAtIndex:photoIndex],nil]];
     }
-    
+    [arr addObjectsFromArray:arr0];
+    NSLog(@"arr = %@",arr0);
     //模拟数据-----
-    [photoWall setImages:arr];
-    photoWall.flowdelegate = self;
+    [self.photoWall setImages:arr];
 }
 
 - (NSInteger)flowView:(PhotoFlowView *)flowView numberOfRowsInColumn:(NSInteger)column
@@ -204,6 +212,11 @@
     
 }
 
+- (void)loadImageView
+{
+    NSLog(@"0000000000000");
+}
+
 - (void)flowView:(PhotoFlowView *)flowView didSelectAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"BEI DIAN JI LA ");
@@ -213,7 +226,6 @@
 //    activityView.center = CGPointMake(160, 200);
 //    [activityView startAnimating];
 //    [self.view addSubview:activityView];
-    
     
     detailVC = [[DetailViewController alloc]init];
     detailVC.arrayDelegate = self;

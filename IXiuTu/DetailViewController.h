@@ -61,4 +61,6 @@
 @property (nonatomic,retain)id<returnCelltagDelegate>   cellTagDelegate;
 @property (nonatomic,retain)id<passActiVityViewDelegate>activityDelegate;
 
++ (id) sharedInstance;
+
 @end

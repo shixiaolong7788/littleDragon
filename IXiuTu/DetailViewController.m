@@ -24,6 +24,18 @@
 @synthesize profilePicArray = _profilePicArray;
 @synthesize profileNameArray = _profileNameArray;
 
+static DetailViewController *sharedInstance;
++ (id) sharedInstance
+{
+    @synchronized([DetailViewController class])
+    {
+        if (sharedInstance == nil) {
+            sharedInstance = [[DetailViewController alloc]init];
+        }
+    }
+    return sharedInstance;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

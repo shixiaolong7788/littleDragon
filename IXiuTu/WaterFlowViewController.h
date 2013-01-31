@@ -10,17 +10,20 @@
 #import "PhotoFlowView.h"
 #import "DetailViewController.h"
 //#import "BaseViewController.h"
-
+#import "LoadMoreTableFooterView.h"
 typedef void (^RevealBlock)();
+
 
 @protocol returnButtonTagDelegate <NSObject>
 
 - (NSInteger)returnButtonTag;
 - (NSString *)returnButtonTitle;
+- (NSInteger)returnCurrentPage;
+- (NSInteger)returnIsDraggingEnd;
 
 @end
 
-@interface WaterFlowViewController : UIViewController<LLWaterFlowViewDelegate,passMiddleArrayDelegate,passActiVityViewDelegate>
+@interface WaterFlowViewController : UIViewController<passMiddleArrayDelegate,passActiVityViewDelegate,passScrollViewDelegate,LoadMoreTableFooterDelegate>
 {
     //add by caijunjie
     //2013-01-17
@@ -32,6 +35,7 @@ typedef void (^RevealBlock)();
     int photoTypeIndex;
     int photoIndex;
     NSString *photoTypeResponsingString;
+    NSString *currentPage;
     
     NSMutableArray *photoTypeArray;  //图片类型
     NSMutableArray *thumbnailPicArray; //缩略图片
@@ -39,11 +43,14 @@ typedef void (^RevealBlock)();
     NSMutableArray *photoTextArray; //图片的文字
     NSMutableArray *profilePicArray; //头像图片
     NSMutableArray *profileNameArray; //名字
+    NSMutableArray *arr;
     
     NSMutableArray *middlePicArrayImg;
     NSString *photoInfoResponse;
     DetailViewController *detailVC;
     UIActivityIndicatorView *activityView;
+    PhotoFlowView *photoWall;
+    LoadMoreTableFooterView * loadMoreTable;
 }
 
 @property (nonatomic,retain)id<returnButtonTagDelegate>tagDelegate;
@@ -56,7 +63,9 @@ typedef void (^RevealBlock)();
 
 @property (nonatomic,retain)NSString *photoInfoResponse;
 @property (nonatomic,retain)NSMutableArray *middlePicArrayImg;
+@property (nonatomic,retain)PhotoFlowView *photoWall;
 
++ (id) sharedInstance;
 - (void)getPhotoType;
 - (void)getPhotoClasstype:(NSString *)classType page:(NSString *)page;
 - (void)photoInfoParser;
