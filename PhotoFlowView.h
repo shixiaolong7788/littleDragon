@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIWebImageView.h"
 #import "EGORefreshTableHeaderView.h"
-#import "LoadMoreTableFooterView.h"
+#import "EGORefreshTableFooterView.h"
 #import "DetailViewController.h"
 //#import "WaterFlowViewController.h"
 #import "ThumbPhotoInfo.h"
@@ -26,7 +26,7 @@
 @protocol LLWaterFlowViewDelegate;
 @class LLWaterFlowCell;
 
-@interface PhotoFlowView : UIScrollView<UIScrollViewDelegate,EGORefreshTableHeaderDelegate,LoadMoreTableFooterDelegate>{
+@interface PhotoFlowView : UIScrollView<UIScrollViewDelegate,EGORefreshTableDelegate>{
     float y1;
     float y2;
     float y3;
@@ -43,7 +43,7 @@
     NSMutableDictionary *_dicReuseCells; //重用的cell
     NSMutableArray *_onScreenCells; //重用的cell
     EGORefreshTableHeaderView * _refreshHeaderView;
-    LoadMoreTableFooterView *loadMoreView;
+    EGORefreshTableFooterView *_refreshFooterView;
     
 	BOOL _reloading;
     id <LLWaterFlowViewDelegate> _flowdelegate;

@@ -78,10 +78,12 @@ static WaterFlowViewController *sharedInstance;
     self.profilePicArray = [[NSMutableArray alloc]init];
     self.profileNameArray = [[NSMutableArray alloc]init];
     arr = [[NSMutableArray alloc]init];
-    loadMoreTable = [[LoadMoreTableFooterView alloc]init];
-    loadMoreTable.delegate = self;
     
-    [self getPhotoClasstype:self.title page:currentPage];
+    egoRefreshView = [[EGORefreshTableHeaderView alloc]init];
+    _refreshFooterView = [[EGORefreshTableFooterView alloc]init];
+    _refreshFooterView.delegate = self;
+    
+    [self getPhotoClasstype:self.title page:@"1"];
     
 }
 
@@ -168,11 +170,12 @@ static WaterFlowViewController *sharedInstance;
     
     [request startAsynchronous];
 }
-- (void)loadMoreTableFooterDidTriggerLoadMore:(LoadMoreTableFooterView*)view
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
 {
-    NSLog(@"1234567890");
-    [self getPhotoClasstype:self.title page:@"2"];
+    NSLog(@"4444444444444");
 }
+
 - (NSMutableArray *)returnMiddlepicarray
 {
     NSLog(@"self.middlePicAeeay = %@",self.middlePicArray);

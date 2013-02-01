@@ -10,7 +10,7 @@
 #import "PhotoFlowView.h"
 #import "DetailViewController.h"
 //#import "BaseViewController.h"
-#import "LoadMoreTableFooterView.h"
+#import "EGORefreshTableFooterView.h"
 typedef void (^RevealBlock)();
 
 
@@ -23,7 +23,7 @@ typedef void (^RevealBlock)();
 
 @end
 
-@interface WaterFlowViewController : UIViewController<passMiddleArrayDelegate,passActiVityViewDelegate,passScrollViewDelegate,LoadMoreTableFooterDelegate>
+@interface WaterFlowViewController : UIViewController<passMiddleArrayDelegate,passActiVityViewDelegate,passScrollViewDelegate,EGORefreshTableDelegate>
 {
     //add by caijunjie
     //2013-01-17
@@ -50,7 +50,8 @@ typedef void (^RevealBlock)();
     DetailViewController *detailVC;
     UIActivityIndicatorView *activityView;
     PhotoFlowView *photoWall;
-    LoadMoreTableFooterView * loadMoreTable;
+    EGORefreshTableHeaderView *egoRefreshView;
+    EGORefreshTableFooterView *_refreshFooterView;
 }
 
 @property (nonatomic,retain)id<returnButtonTagDelegate>tagDelegate;

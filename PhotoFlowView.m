@@ -8,6 +8,7 @@
 
 #import "PhotoFlowView.h"
 
+@class WaterFlowViewController;
 @implementation PhotoFlowView
 @synthesize dicReuseCells = _dicReuseCells, onScreenCells = _onScreenCells;
 - (id)initWithFrame:(CGRect)frame target:(UIViewController*)target action:(SEL)act
@@ -19,25 +20,18 @@
         self.delegate = self;
         currentPage = 1;
         isDraggingEnd = NO;
-    }
+}
     
-    if (_refreshHeaderView == nil) {
-        EGORefreshTableHeaderView * view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0,0- self.bounds.size.height, self.frame.size.width, self.bounds.size.height)];
-        view.delegate = self;
-        [self addSubview:view];
-        _refreshHeaderView = view;
-        //        [view release];
-    }
-    [_refreshHeaderView refreshLastUpdatedDate];
-    
-    if (loadMoreView == nil) {
-        /* Load more view init */
-        LoadMoreTableFooterView *view = [[LoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height, self.frame.size.width, self.bounds.size.height)];
-//        view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        view.delegate = self;
-        [self addSubview:view];
-        loadMoreView = view;
-    }
+//    if (_refreshHeaderView == nil) {
+//        EGORefreshTableHeaderView * view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0,0- self.bounds.size.height, self.frame.size.width, self.bounds.size.height)];
+//        view.delegate = self;
+//        [self addSubview:view];
+//        _refreshHeaderView = view;
+//        //        [view release];
+//    }
+//    [_refreshHeaderView refreshLastUpdatedDate];
+    [self createHeaderView];
+
     
     return self;
 }
@@ -133,6 +127,7 @@
 	}
 	//取最大的高度作为scrollview的contensize 的height；
 	self.contentSize = CGSizeMake(self.frame.size.width, maxHeight);
+    
 }
 
 - (void)setImages:(NSArray*)images{
@@ -196,6 +191,52 @@
     }
     NSLog(@"init [self.onScreenCells count]: %d",[self.onScreenCells count]);
     
+    [self setFooterView];
+}
+
+-(void)createHeaderView{
+    if (_refreshHeaderView && [_refreshHeaderView superview]) {
+        [_refreshHeaderView removeFromSuperview];
+    }
+	_refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:
+                          CGRectMake(0,0- self.bounds.size.height, self.frame.size.width, self.bounds.size.height)];
+    _refreshHeaderView.delegate = self;
+    
+	[self addSubview:_refreshHeaderView];
+    
+    [_refreshHeaderView refreshLastUpdatedDate];
+}
+
+-(void)removeHeaderView{
+    if (_refreshHeaderView && [_refreshHeaderView superview]) {
+        [_refreshHeaderView removeFromSuperview];
+    }
+    _refreshHeaderView = nil;
+}
+
+-(void)setFooterView
+{
+    if (_refreshFooterView && [_refreshFooterView superview]) {
+        // reset position
+        _refreshFooterView.frame = CGRectMake(0, self.contentSize.height, self.frame.size.width, self.bounds.size.height);
+    }else {
+        // create the footerView
+        _refreshFooterView = [[EGORefreshTableFooterView alloc] initWithFrame:
+                              CGRectMake(0, self.contentSize.height, self.frame.size.width, self.bounds.size.height)];
+        _refreshFooterView.delegate = self;
+        [self addSubview:_refreshFooterView];
+    }
+    
+    if (_refreshFooterView) {
+        [_refreshFooterView refreshLastUpdatedDate];
+    }
+}
+
+-(void)removeFooterView{
+    if (_refreshFooterView && [_refreshFooterView superview]) {
+        [_refreshFooterView removeFromSuperview];
+    }
+    _refreshFooterView = nil;
 }
 
 - (void)ImageTaped:(UITapGestureRecognizer*)UITapGestureRecognizer
@@ -274,6 +315,17 @@
     
 }
 
+#pragma mark -
+#pragma mark data reloading methods that must be overide by the subclass
+
+-(void)beginToReloadData:(EGORefreshPos)aRefreshPos{
+	
+	//  should be calling your tableviews data source model to reload
+	_reloading = YES;
+    
+	// overide, the actual loading data operation is done in the subclass
+}
+
 
 #pragma mark -
 #pragma mark Data Source Loading / Reloading Methods
@@ -297,44 +349,26 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self reloadImageViews];
-    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-    
-    if([_flowdelegate  conformsToProtocol:@protocol(UIScrollViewDelegate)]  && [_flowdelegate respondsToSelector:@selector(scrollViewDidScroll:)])
-	{
-		[(id<UIScrollViewDelegate>) _flowdelegate  scrollViewDidScroll:self];
-	}
+	if (_refreshHeaderView) {
+        [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    }
+	
+	if (_refreshFooterView) {
+        [_refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
+    }
 }
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
 	[self reloadImageViews];
 }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    //    NSLog(@"[self.dicReuseCells count]: %d",[self.dicReuseCells count]);
-    //    NSLog(@"[self.onScreenCells count]: %d",[self.onScreenCells count]);
-    //    NSLog(@"[self.subviews count]: %d",[self.subviews count]);
+
     [self reloadImageViews];
     
-//    if([_flowdelegate  conformsToProtocol:@protocol(UIScrollViewDelegate)]  && [_flowdelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)])
-//	{
-//		[(id<UIScrollViewDelegate>) _flowdelegate  scrollViewDidEndDecelerating:self];
-//	}
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 	
-	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-//    if([_flowdelegate  conformsToProtocol:@protocol(UIScrollViewDelegate)]  && [_flowdelegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)])
-//	{
-//		[(id<UIScrollViewDelegate>) _flowdelegate  scrollViewDidEndDragging:self willDecelerate:decelerate];
-//	}
-//    WaterFlowViewController *waterVC = [[WaterFlowViewController alloc]init];
-//    [[WaterFlowViewController sharedInstance]getPhotoClasstype:@"美女" page:@"1"];
-//    ThumbPhotoInfo *thumbPInfo = [[ThumbPhotoInfo alloc]init];
-//    thumbPInfo.number = 120;
-//    thumbPInfo.urlString = @"http://ww3.sinaimg.cn/thumbnail/6208bbb0jw1e1coivwsl6j.jpg";
-    
-//    NSArray *array = [[NSArray alloc]initWithObjects:thumbPInfo,thumbPInfo,thumbPInfo,thumbPInfo, nil];
-//    [self setImages:array];
     currentPage ++;
     isDraggingEnd = YES;
     NSLog(@"currentPage = %d",currentPage);
@@ -342,6 +376,14 @@
     
     [[NSUserDefaults standardUserDefaults]setInteger:currentPage forKey:@"currentPage"];
     [[NSUserDefaults standardUserDefaults]setInteger:isDraggingEnd forKey:@"isDraggingEnd"];
+    
+    if (_refreshHeaderView) {
+        [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    }
+	
+	if (_refreshFooterView) {
+        [_refreshFooterView egoRefreshScrollViewDidEndDragging:scrollView];
+    }
     
     [self.passScrollDelegate loadImageView];
 }
@@ -368,26 +410,28 @@
 }
 
 #pragma mark -
-#pragma mark EGORefreshTableHeaderDelegate Methods
+#pragma mark EGORefreshTableDelegate Methods
 
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+- (void)egoRefreshTableDidTriggerRefresh:(EGORefreshPos)aRefreshPos{
 	
-	[self reloadTableViewDataSource];
-	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
-	
+	[self beginToReloadData:aRefreshPos];
+    NSLog(@"333333333333");
 }
 
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+- (BOOL)egoRefreshTableDataSourceIsLoading:(UIView*)view{
 	
 	return _reloading; // should return if data source model is reloading
 	
 }
 
-- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+
+// if we don't realize this method, it won't display the refresh timestamp
+- (NSDate*)egoRefreshTableDataSourceLastUpdated:(UIView*)view{
 	
 	return [NSDate date]; // should return date data source was last changed
 	
 }
+
 @end
 
 //-------------------------------------------------------------------------------------------------------------------------------
