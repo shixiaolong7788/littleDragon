@@ -27,7 +27,6 @@
 @synthesize profilePicArray;
 @synthesize photoTextArray;
 @synthesize profileNameArray;
-@synthesize photoWall;
 
 static WaterFlowViewController *sharedInstance;
 + (id) sharedInstance
@@ -59,16 +58,20 @@ static WaterFlowViewController *sharedInstance;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    currentNumber = 1;
+    
     //self.title = [tagDelegate returnButtonTitle];
-    //self.title = @"你们好";
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"imageListBgView.png"]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBar_bg.png"] forBarMetrics:UIBarMetricsDefault];
     NSLog(@"currentPage ====== %d",[[NSUserDefaults standardUserDefaults]integerForKey:@"currentPage"]);
-    currentPage = [NSString stringWithFormat:@"%d",[[NSUserDefaults standardUserDefaults]integerForKey:@"currentPage"]+1];
+    currentPage = [NSString stringWithFormat:@"%d",[[NSUserDefaults standardUserDefaults]integerForKey:@"currentPage"]];
     
-    self.photoWall = [[PhotoFlowView alloc] initWithFrame:CGRectMake(0, 0, 320, 436) target:nil action:nil];
-    [self.view addSubview:self.photoWall];
-    [self.photoWall setContentInset:UIEdgeInsetsMake(0, 0, 40, 0)];
+    photoWall = [[PhotoFlowView alloc] initWithFrame:CGRectMake(0, 0, 320, 436) target:nil action:nil];
+    [photoWall setContentInset:UIEdgeInsetsMake(0, 0, 40, 0)];
+    photoWall.flowdelegate = self;
+    photoWall.passScrollDelegate = self;
+    [self.view addSubview:photoWall];
     
     self.photoTypeArray = [[NSMutableArray alloc]init];
     self.thumbnailPicArray = [[NSMutableArray alloc]init];
@@ -80,10 +83,12 @@ static WaterFlowViewController *sharedInstance;
     arr = [[NSMutableArray alloc]init];
     
     egoRefreshView = [[EGORefreshTableHeaderView alloc]init];
+    egoRefreshView.delegate = self;
     _refreshFooterView = [[EGORefreshTableFooterView alloc]init];
     _refreshFooterView.delegate = self;
     
-    [self getPhotoClasstype:self.title page:@"1"];
+    NSLog(@"currentpage ========= %@",currentPage);
+    [self getPhotoClasstype:self.title page:[NSString stringWithFormat:@"%d",currentNumber]];
     
 }
 
@@ -171,11 +176,6 @@ static WaterFlowViewController *sharedInstance;
     [request startAsynchronous];
 }
 
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
-{
-    NSLog(@"4444444444444");
-}
-
 - (NSMutableArray *)returnMiddlepicarray
 {
     NSLog(@"self.middlePicAeeay = %@",self.middlePicArray);
@@ -195,7 +195,26 @@ static WaterFlowViewController *sharedInstance;
     [arr addObjectsFromArray:arr0];
     NSLog(@"arr = %@",arr0);
     //模拟数据-----
-    [self.photoWall setImages:arr];
+    if ([arr count]==20) {
+        [photoWall setImages:arr0];
+    }else{
+        [photoWall setImages2:arr0];
+    }
+
+}
+
+- (NSUInteger)numberOfColumnsInFlowView:(PhotoFlowView *)flowView
+{
+    return 3;
+}
+
+- (LLWaterFlowCell *)flowView:(PhotoFlowView *)flowView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+- (CGFloat)flowView:(PhotoFlowView *)flowView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 - (NSInteger)flowView:(PhotoFlowView *)flowView numberOfRowsInColumn:(NSInteger)column
@@ -217,7 +236,9 @@ static WaterFlowViewController *sharedInstance;
 
 - (void)loadImageView
 {
+    currentNumber ++;
     NSLog(@"0000000000000");
+    [self getPhotoClasstype:self.title page:[NSString stringWithFormat:@"%d",currentNumber]];
 }
 
 - (void)flowView:(PhotoFlowView *)flowView didSelectAtIndexPath:(NSIndexPath *)indexPath

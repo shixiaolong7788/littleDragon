@@ -133,7 +133,7 @@
 			_statusLabel.text = NSLocalizedString(@"Release to load more...", @"Release to load more");
 			[CATransaction begin];
 			[CATransaction setAnimationDuration:FLIP_ANIMATION_DURATION];
-//			_arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);
+			_arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);
             _arrowImage.transform = CATransform3DIdentity;
 			[CATransaction commit];
 			
@@ -152,7 +152,7 @@
 			[CATransaction begin];
 			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
 			_arrowImage.hidden = NO;
-			//_arrowImage.transform = CATransform3DIdentity;
+			_arrowImage.transform = CATransform3DIdentity;
             _arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);
 			[CATransaction commit];
 			

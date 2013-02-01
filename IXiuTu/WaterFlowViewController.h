@@ -23,7 +23,7 @@ typedef void (^RevealBlock)();
 
 @end
 
-@interface WaterFlowViewController : UIViewController<passMiddleArrayDelegate,passActiVityViewDelegate,passScrollViewDelegate,EGORefreshTableDelegate>
+@interface WaterFlowViewController : UIViewController<passMiddleArrayDelegate,passActiVityViewDelegate,passScrollViewDelegate,LLWaterFlowViewDelegate,EGORefreshTableDelegate>
 {
     //add by caijunjie
     //2013-01-17
@@ -52,6 +52,8 @@ typedef void (^RevealBlock)();
     PhotoFlowView *photoWall;
     EGORefreshTableHeaderView *egoRefreshView;
     EGORefreshTableFooterView *_refreshFooterView;
+    
+    NSInteger currentNumber;
 }
 
 @property (nonatomic,retain)id<returnButtonTagDelegate>tagDelegate;
@@ -64,7 +66,6 @@ typedef void (^RevealBlock)();
 
 @property (nonatomic,retain)NSString *photoInfoResponse;
 @property (nonatomic,retain)NSMutableArray *middlePicArrayImg;
-@property (nonatomic,retain)PhotoFlowView *photoWall;
 
 + (id) sharedInstance;
 - (void)getPhotoType;

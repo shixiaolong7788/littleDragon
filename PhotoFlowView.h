@@ -66,7 +66,7 @@
 - (void)setImages:(NSArray*)images;
 - (void)reloadTableViewDataSource;
 - (void)doneLoadingTableViewData;
-
+- (void)setImages2:(NSArray *)images;
 
 //获取重用的cell
 - (LLWaterFlowCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;

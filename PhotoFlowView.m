@@ -30,9 +30,8 @@
 //        //        [view release];
 //    }
 //    [_refreshHeaderView refreshLastUpdatedDate];
-    [self createHeaderView];
+//    [self createHeaderView];
 
-    
     return self;
 }
 
@@ -129,7 +128,69 @@
 	self.contentSize = CGSizeMake(self.frame.size.width, maxHeight);
     
 }
+- (void)setImages2:(NSArray *)images
+{
+    _onScreenCells = [NSMutableArray array];
+    
+    float offsetY = 4;
+    if (images) {
+        if (!imageArray) imageArray = [NSMutableArray array];
+        y1 = offsetY; y2 = offsetY; y3 = offsetY;
+        for (NSArray *arr in images) {
+            //find the smallest y in y1, y2, y3, y4
+            float tempY = y1; int caseValue = 0;
+            if (tempY>y2) { tempY = y2; caseValue = 1; }
+            if (tempY>y3) { tempY = y3; caseValue = 2; }
+            
+            float h = [[arr objectAtIndex:0] floatValue];
+            int   x = 5 + caseValue%3*105;
+            float y = 0;
+            switch (caseValue) {
+                case 0:
+                    y = y1; y1 = y1 + h +4;
+                    break;
+                case 1:
+                    y = y2; y2 = y2+ h + 4;
+                    break;
+                case 2:
+                    y = y3; y3 = y3 + h + 4;
+                    break;
+                default:
+                    break;
+            }
+            
+            [imageArray addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:x], [NSNumber numberWithFloat:y], [NSNumber numberWithFloat:h], [arr objectAtIndex:1], nil]];
+            if (y1 > self.frame.size.height && y2 > self.frame.size.height && y3 > self.frame.size.height) continue;
+            
+            LLWaterFlowCell* imageView;
+            imageView = [[LLWaterFlowCell alloc] initWithIdentifier:@"LLWaterFlowCell_Identifier"];
+            imageView.indexPath = [NSIndexPath indexPathForRow:caseValue inSection:caseValue];
+            [imageView setFrame:CGRectMake(x, y, 100, h)];
+            imageView.tag = 100+[images indexOfObject:arr];
+            [imageView loadImageWithUrl:[arr objectAtIndex:1]];
+            [imageView setUserInteractionEnabled:YES];
+            imageView.backgroundColor = [UIColor blackColor];//保证在图片未加载出来之前能接受滑动手势
+            imageView.layer.borderWidth = 2;
+            imageView.layer.borderColor = [UIColor whiteColor].CGColor;
+            
+            
+            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ImageTaped:)];
+            [imageView addGestureRecognizer:singleTap];
+			[self addSubview:imageView];
+            
+        }
+        float tempY = y1;
+        if (tempY<y2) tempY = y2;
+        if (tempY<y3) tempY = y3;
+        
+        [self setContentSize:CGSizeMake(self.frame.size.width, (tempY > self.frame.size.height ? tempY : self.frame.size.height+1))];
+    }
+    NSLog(@"init [self.onScreenCells count]: %d",[self.onScreenCells count]);
+    
+    [self setFooterView];
+    [self doneLoadingTableViewData];
 
+}
 - (void)setImages:(NSArray*)images{
     
     [self didInit];
@@ -342,33 +403,33 @@
 	
 	//  model should call this when its done loading
 	_reloading = NO;
-	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self];
+	[_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:self];
 	
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+{//2
     [self reloadImageViews];
-	if (_refreshHeaderView) {
-        [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-    }
-	
-	if (_refreshFooterView) {
-        [_refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
-    }
+//	if (_refreshHeaderView) {
+//        [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+//    }
+//	
+//	if (_refreshFooterView) {
+//        [_refreshFooterView egoRefreshScrollViewDidScroll:scrollView];
+//    }
 }
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
 	[self reloadImageViews];
 }
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-
-    [self reloadImageViews];
-    
-}
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+//
+//    [self reloadImageViews];
+//    
+//}
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-	
+	//3
     currentPage ++;
     isDraggingEnd = YES;
     NSLog(@"currentPage = %d",currentPage);
@@ -377,19 +438,19 @@
     [[NSUserDefaults standardUserDefaults]setInteger:currentPage forKey:@"currentPage"];
     [[NSUserDefaults standardUserDefaults]setInteger:isDraggingEnd forKey:@"isDraggingEnd"];
     
-    if (_refreshHeaderView) {
-        [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-    }
+//    if (_refreshHeaderView) {
+//        [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+//    }
 	
 	if (_refreshFooterView) {
         [_refreshFooterView egoRefreshScrollViewDidEndDragging:scrollView];
     }
     
-    [self.passScrollDelegate loadImageView];
+    
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
+{//1
     isDraggingEnd = NO;
     [[NSUserDefaults standardUserDefaults]setInteger:isDraggingEnd forKey:@"isDraggingEnd"];
     NSLog(@"isdraggingEnd = %d",isDraggingEnd);
@@ -416,6 +477,7 @@
 	
 	[self beginToReloadData:aRefreshPos];
     NSLog(@"333333333333");
+    [self.passScrollDelegate loadImageView];
 }
 
 - (BOOL)egoRefreshTableDataSourceIsLoading:(UIView*)view{
@@ -423,7 +485,6 @@
 	return _reloading; // should return if data source model is reloading
 	
 }
-
 
 // if we don't realize this method, it won't display the refresh timestamp
 - (NSDate*)egoRefreshTableDataSourceLastUpdated:(UIView*)view{
