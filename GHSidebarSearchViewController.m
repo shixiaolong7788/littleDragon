@@ -8,7 +8,6 @@
 #import "GHSidebarSearchViewController.h"
 #import "GHRevealViewController.h"
 
-
 #pragma mark -
 #pragma mark Constants
 const NSTimeInterval kGHSidebarDefaultSearchDelay = 0.8;

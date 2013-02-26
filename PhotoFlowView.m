@@ -324,11 +324,11 @@
             [readyToRemove addObject:view];
         }
     }
-//    for (LLWaterFlowCell *view in readyToRemove) {
-//        [_onScreenCells removeObject:view];
-//        [view removeFromSuperview];
-//        [self addCellToReuseQueue:view];
-//    }
+    for (LLWaterFlowCell *view in readyToRemove) {
+        [_onScreenCells removeObject:view];
+        [view removeFromSuperview];
+        [self addCellToReuseQueue:view];
+    }
     //遍历图片数组
     for (NSArray *imageInfo in imageArray) {
         int   tagIndex = [imageArray indexOfObject:imageInfo];
@@ -404,7 +404,6 @@
 	//  model should call this when its done loading
 	_reloading = NO;
 	[_refreshFooterView egoRefreshScrollViewDataSourceDidFinishedLoading:self];
-	
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

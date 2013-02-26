@@ -178,22 +178,22 @@ static WaterFlowViewController *sharedInstance;
 
 - (NSMutableArray *)returnMiddlepicarray
 {
-    NSLog(@"self.middlePicAeeay = %@",self.middlePicArray);
+//    NSLog(@"self.middlePicAeeay = %@",self.middlePicArray);
     return self.middlePicArray;
 }
 
 - (void)photoFlowClass
 {
-    NSLog(@"thumbNailPicArray = %@",self.thumbnailPicArray);
+//    NSLog(@"thumbNailPicArray = %@",self.thumbnailPicArray);
     NSMutableArray *arr0 = [NSMutableArray array];
     for (photoIndex=0; photoIndex<[self.thumbnailPicArray count]; photoIndex++) {
         NSURL *url = [NSURL URLWithString:[self.thumbnailPicArray objectAtIndex:photoIndex]];
         NSData *data = [NSData dataWithContentsOfURL:url];//载入数据
         UIImage *img = [UIImage imageWithData:data];
-        [arr0 addObject:[NSArray arrayWithObjects:[NSNumber numberWithInt:img.size.height],[self.thumbnailPicArray objectAtIndex:photoIndex],nil]];
+        [arr0 addObject:[NSArray arrayWithObjects:[NSNumber numberWithInt:img.size.height/(img.size.width/100)],[self.thumbnailPicArray objectAtIndex:photoIndex],nil]];
     }
     [arr addObjectsFromArray:arr0];
-    NSLog(@"arr = %@",arr0);
+//    NSLog(@"arr = %@",arr0);
     //模拟数据-----
     if ([arr count]==20) {
         [photoWall setImages:arr0];

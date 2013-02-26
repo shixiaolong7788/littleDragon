@@ -118,20 +118,20 @@
 		C0FBF62A16A8331A0041954F /* GHSidebarSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHSidebarSearchViewController.h; sourceTree = "<group>"; };
 		C0FBF62B16A8331A0041954F /* GHSidebarSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHSidebarSearchViewController.m; sourceTree = "<group>"; };
 		C0FBF62C16A8331A0041954F /* GHSidebarSearchViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHSidebarSearchViewControllerDelegate.h; sourceTree = "<group>"; };
-		C0FBF62D16A833410041954F /* GHMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHMenuCell.h; sourceTree = "<group>"; };
-		C0FBF62E16A833460041954F /* GHMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHMenuCell.m; sourceTree = "<group>"; };
-		C0FBF63016A8336C0041954F /* GHMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHMenuViewController.h; sourceTree = "<group>"; };
-		C0FBF63116A8336C0041954F /* GHMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHMenuViewController.m; sourceTree = "<group>"; };
-		C0FBF63216A833860041954F /* GHRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHRootViewController.h; sourceTree = "<group>"; };
-		C0FBF63316A833860041954F /* GHRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHRootViewController.m; sourceTree = "<group>"; };
+		C0FBF62D16A833410041954F /* GHMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHMenuCell.h; path = IXiuTu/GHMenuCell.h; sourceTree = "<group>"; };
+		C0FBF62E16A833460041954F /* GHMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GHMenuCell.m; path = IXiuTu/GHMenuCell.m; sourceTree = "<group>"; };
+		C0FBF63016A8336C0041954F /* GHMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHMenuViewController.h; path = IXiuTu/GHMenuViewController.h; sourceTree = "<group>"; };
+		C0FBF63116A8336C0041954F /* GHMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHMenuViewController.m; path = IXiuTu/GHMenuViewController.m; sourceTree = "<group>"; };
+		C0FBF63216A833860041954F /* GHRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHRootViewController.h; path = IXiuTu/GHRootViewController.h; sourceTree = "<group>"; };
+		C0FBF63316A833860041954F /* GHRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHRootViewController.m; path = IXiuTu/GHRootViewController.m; sourceTree = "<group>"; };
 		C0FBF63916A843050041954F /* NSObject+Subscripts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Subscripts.h"; sourceTree = "<group>"; };
 		C0FBF63B16A843760041954F /* searchBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBarBG.png; sourceTree = "<group>"; };
 		C0FBF63C16A843760041954F /* searchBarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBarIcon.png; sourceTree = "<group>"; };
 		C0FBF63D16A843760041954F /* searchBarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarIcon@2x.png"; sourceTree = "<group>"; };
 		C0FBF63E16A843760041954F /* searchTextBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchTextBG.png; sourceTree = "<group>"; };
 		C0FBF63F16A843760041954F /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
-		C0FBF64F16A848E50041954F /* GHPushedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GHPushedViewController.h; sourceTree = "<group>"; };
-		C0FBF65016A848E50041954F /* GHPushedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GHPushedViewController.m; sourceTree = "<group>"; };
+		C0FBF64F16A848E50041954F /* GHPushedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GHPushedViewController.h; path = IXiuTu/GHPushedViewController.h; sourceTree = "<group>"; };
+		C0FBF65016A848E50041954F /* GHPushedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GHPushedViewController.m; path = IXiuTu/GHPushedViewController.m; sourceTree = "<group>"; };
 		C0FBF65316A849F20041954F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C0FE8DF516B6C5D2001BA916 /* ICommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICommentView.xib; sourceTree = "<group>"; };
 		CE06352B16A3DCD6009ACB88 /* IXiuTu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IXiuTu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -316,6 +316,14 @@
 				C0FBF62A16A8331A0041954F /* GHSidebarSearchViewController.h */,
 				C0FBF62B16A8331A0041954F /* GHSidebarSearchViewController.m */,
 				C0FBF62C16A8331A0041954F /* GHSidebarSearchViewControllerDelegate.h */,
+				C0FBF64F16A848E50041954F /* GHPushedViewController.h */,
+				C0FBF65016A848E50041954F /* GHPushedViewController.m */,
+				C0FBF63216A833860041954F /* GHRootViewController.h */,
+				C0FBF63316A833860041954F /* GHRootViewController.m */,
+				C0FBF63016A8336C0041954F /* GHMenuViewController.h */,
+				C0FBF63116A8336C0041954F /* GHMenuViewController.m */,
+				C0FBF62E16A833460041954F /* GHMenuCell.m */,
+				C0FBF62D16A833410041954F /* GHMenuCell.h */,
 			);
 			name = GHSidebarNav;
 			sourceTree = "<group>";
@@ -390,14 +398,6 @@
 			children = (
 				C001040916B17915001E2536 /* MDCParallaxView.h */,
 				C001040A16B17915001E2536 /* MDCParallaxView.m */,
-				C0FBF64F16A848E50041954F /* GHPushedViewController.h */,
-				C0FBF65016A848E50041954F /* GHPushedViewController.m */,
-				C0FBF63216A833860041954F /* GHRootViewController.h */,
-				C0FBF63316A833860041954F /* GHRootViewController.m */,
-				C0FBF63016A8336C0041954F /* GHMenuViewController.h */,
-				C0FBF63116A8336C0041954F /* GHMenuViewController.m */,
-				C0FBF62E16A833460041954F /* GHMenuCell.m */,
-				C0FBF62D16A833410041954F /* GHMenuCell.h */,
 				CE06353E16A3DCD6009ACB88 /* AppDelegate.h */,
 				CE06353F16A3DCD6009ACB88 /* AppDelegate.m */,
 				CE06354C16A3DD6A009ACB88 /* PhotoInfoPaser.h */,
